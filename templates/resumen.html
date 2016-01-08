@@ -1,0 +1,71 @@
+{%extends "base.html"%}
+
+
+{% block content%}
+
+  <div class="page-header"> <!--div para titulo-->
+    <h1>Resumen emergencia <small>Bomberos de Valdivia al servicio de la comunidad</small></h1>
+  </div>
+  <div class="container">
+    <div id="map" class="col-xs-2 col-md-6">
+      <script type="text/javascript">initMap();</script> 
+    </div>
+    <div>
+      <div class="col-xs-8 col-md-4">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h1 class="panel-title">Resumen Emergencia Activa</h1>
+          </div>
+          <div class="panel-body">
+            <p>Resumen de la información proporcionada para la emergencia en desarrollo.</p>
+            <ul class="list-group">
+              <!--acceder a la base de datos y desplegar la información-->
+              <li id="calle1" class="list-group-item">Calle Principal: {{calle1}}</li>
+              <li id="calle2" class="list-group-item">Calle/Esquina: {{calle2}}</li>
+              <li id="sector"class="list-group-item">Sector: {{sector}}</li>
+              <li id="poblacion"class="list-group-item">Población: {{poblacion}}</li>
+              <li id="poi"class="list-group-item">Punto de Referencia: {{ref}}</li>
+              <li id="descripcion"class="list-group-item">Descripcion: {{descripcion}}</li>
+              <li id="contacto"class="list-group-item">N° de Contacto: {{contacto}}</li>
+              <li id="codigo"class="list-group-item" >Código: {{codigo}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-8">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Máquinas a Despachar</div>
+        <!--Desplegar lista de máquinas existentes, valores cercania
+        dependen de las direcciones desplegadas en el formulario y la comparacion con la
+        base de datos y valor de disponibilidad depende de la informacion otorgada en emergencia activa-->
+        <form role="form" action="{{ url_for('despacho') }}" method="post" enctype="multipart/form-data"><!--definir action-->
+          <!--moar datos a enviar-->
+          <input type="hidden" name="pkcodigo" id="pk" value="{{pkCodigo}}">
+          <!--<input type="hidden" name="distancia" id="dist" value="">-->
+          <input type="hidden" name="compania" id="comp" value="">
+          <!-- datos a enviar -->
+          <input type="hidden" name="calle1"  value="{{calle1}}">
+          <input type="hidden" name="calle2"  value="{{calle2}}">
+          <input type="hidden" name="sector"  value="{{sector}}">
+          <input type="hidden" name="poblacion" value="{{poblacion}}">
+          <input type="hidden" name="poi" value="{{ref}}">
+          <input type="hidden" name="descripcion" value="{{descripcion}}" >
+          <input type="hidden" name="contacto" value="{{contacto}}" >
+          <input type="hidden" name="codigo"  value="{{codigo}}">
+          <div class="col-xs-6 col-md-8 col-md-offset-1">
+            <!--al aceptar asocia la maquina a la emergencia segun el checkbox seleccionado y
+            debe enviar un link  a ventana principal para
+            agregarlo a la lista emergencias activas-->
+              <button type="submit" class="btn btn-default">Despacho</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+ 
+  
+   
+
+{% endblock content%}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		{% block head %}
+		<title>{% block title%}Bomberos Chicos Buenos{% endblock title%}</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<!--Bootstrap!!!-->
+		<link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+		<link href="{{url_for('static', filename='bootstrap/css/bootstrap-theme.min.css')}}" rel="stylesheet">
+		<link href="{{url_for('static', filename='estilo.css')}}" rel="stylesheet">
+	
+		{% block estilo_login%}{% endblock estilo_login%}
+
+		<!--Scripts-->
+		<script src="{{url_for('static', filename='jquery-2.1.4.min.js')}}"></script>
+		<script src="{{url_for('static',filename='mapa.js')}}"></script>
+		<script src="{{url_for('static', filename='bootstrap/js/bootstrap.min.js')}}"></script>
+		<script type=text/javascript>
+		  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+		<script src="http://map.google.com/maps/api/js"></script>
+		{% endblock head%}
+	</head>
+	<body>
+		{% block content%}
+		{%endblock content%}
+	</body>
+</html>

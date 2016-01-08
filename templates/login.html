@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+
+{%block estilo_login%} <link href="{{url_for('static', filename='estilo_login.css')}}" rel="stylesheet">{%endblock estilo_login%}
+
+{% block title %}Login{% endblock title %}
+
+
+{% block content %}
+
+<div class="container">
+      
+      <form id="logi" class="form-signin" action="{{url_for('login')}}" method="post">
+        {% if error!=None %}
+        <span style="color:red" id="asd">{{error}}</span>
+        {% endif %}
+        <h2 class="form-signin-heading">Iniciar Sesion</h2>
+        <label for="user" class="sr-only">Usuario</label>
+        <input type="text" name="user" id="user" class="form-control" placeholder="Usuario" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="Password" id="Password" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Recuerdame
+          </label>
+        </div>
+        <button id="iniciar" class="btn btn-lg btn-primary btn-block" type="submit">Iniciar</button>
+      </form>
+
+    </div> <!-- /container -->
+<script type="text/javascript">$("#asd").fadeOut(2000);</script>
+{% endblock content %}

@@ -1,0 +1,132 @@
+{%extends "base.html"%}
+
+{% block content%}
+	<div class="page-header"> <!--div para titulo-->
+		<h1>Sistema de Emergencias <small>Bomberos de Valdivia al servicio de la comunidad</small></h1>
+	</div>
+	<!--Div para cuerpo-->
+	<div class="container">
+		<div >
+			<!--div q contiene al formulario-->
+			<div class="col-xs-6 col-md-6">
+				<!--formulario-->
+				<form id="formulario" class="form-horizontal" role="form" action="{{ url_for('resumen') }}" method="post" enctype="multipart/form-data">
+					<div class="form-group">
+						<h2>Formulario</h2>
+					</div>
+					<br>
+					<div class="form-group">
+	    				<label class="col-lg-2 control-label" for="calle">Calle</label>
+	    				<div class="col-lg-10">
+	    					<input type="text" class="form-control" name="calle" id="calle" placeholder="Nombre calle">
+	    				</div>
+	  				</div>
+	  				<br>
+	  				<div class="form-group">
+	    				<label class="col-lg-2 control-label" for="calle2">Calle/Esquina</label>
+	    				<div class="col-lg-10">
+	   	 					<input type="text" class="form-control" name="calle2" id="calle2" placeholder="Nombre calle intersección">
+	   	 				</div>
+	  				</div>
+	  				<br>
+	  				<div class="form-group">
+	    				<label class="col-lg-2 control-label" for="sector">Sector</label>
+	    				<div class="col-lg-10">
+	    					<input type="text" class="form-control" id="sector" name="sector" placeholder="Sector">
+	    				</div>
+	  				</div>
+	  				<br>
+	  				<div class="form-group">
+	    				<label class="col-lg-2 control-label" for="poblacion">Población</label>
+	    				<div class="col-lg-10">
+	    					<input type="text" class="form-control" name="poblacion" id="poblacion" placeholder="Población">
+	    				</div>
+	  				</div>
+	  				<br>
+	  				<div class="form-group">
+	    				<label class="col-lg-2 control-label" for="ref">Punto de Referencia</label>
+	    				<div class="col-lg-10">
+	    					<input type="text" class="form-control" name="ref" id="ref" placeholder="Punto de referencia">
+	    				</div>
+	  				</div>
+	  				<br>
+	  				<div class="form-group">
+	  					<label class="col-lg-2 control-label" for="descripcion">Descripción</label>
+	  					<div class="col-lg-10">
+							<textarea name="descripcion" id="descripcion" rows="3" cols="60"> Escriba aquí la descripción</textarea>
+						</div>
+					</div>
+					<br>
+	  				<div class="form-group">
+	    				<label class="col-lg-2 control-label" for="contacto">Número de Contacto</label>
+	    				<div class="col-lg-10">
+	    					<input type="text" class="form-control" id="contacto" name="contacto" placeholder="Número de contacto">
+	    				</div>
+	  				</div>
+	  				<br>
+	  				<!--pendiente.. averiguar como precargar los codigos desde la BD para agregarlos a la lista
+	  				como variables option-->
+	  				<div class="form-group">
+	  					<label class="col-lg-2 control-label"  for="codigo">Código</label>
+	  					<div class="col-lg-10 selectContainer">
+							<select class="form-control" name="codigo">
+								<option >Seleccione codigo</option>
+								<option value="1">10-0</option>
+								<option value="2">10-0-1</option>
+								<option value="3">10-0-2</option>
+								<option value="4">10-0-3</option>
+								<option value="5">10-0-4</option>
+								<option value="6">10-1</option>
+								<option value="7">10-2</option>
+								<option value="8">10-3-1</option>
+								<option value="9">10-3-2</option>
+								<option value="10">10-3-3</option>
+								<option value="11">10-3-4</option>
+								<option value="12">10-4-1</option>
+								<option value="13">10-4-2</option>
+								<option value="14">10-5</option>
+								<option value="15">10-6</option>
+								<option value="16">10-7</option>
+								<option value="17">10-8</option>
+								<option value="18">10-9</option>
+								<option value="19">10-10</option>
+								<option value="20">10-11</option>
+								<option value="21">10-12</option>
+								<option value="22">19-13</option>
+								<option value="23">10-14</option>
+								<option value="24">10-15</option>
+							</select>
+						</div>
+	  				</div>
+	  				<br>
+	  				<div class="form-group">
+	  					<button type="reset" form="formulario" class="btn btn-default">Cancelar</button>
+	 		 			<div class="col-lg-10">
+	 		 				<button type="submit" class="btn btn-default" class="form-control">Aceptar</button>
+	 		 			</div>
+	 		 		</div>
+				</form>
+			</div>
+			<div class="col-xs-6 col-md-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">Emergencias Activas</h2>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="list-group">
+						<!--aqui llegan luego de aceptar en la ventana resumen.
+						En las referencia"href" deferia ir a la ventana emergente de detalle, 
+						debe disminuir y aumentar segun la cantidad de emergencias activas-->
+  						<a href="#" class="list-group-item">Emergencia en ...</a>
+  						<a href="#" class="list-group-item">Emergencia en ...</a>
+  						<a href="#" class="list-group-item">Emergencia en ...</a>
+  						<a href="#" class="list-group-item">Emergencia en ...</a>
+  						<a href="#" class="list-group-item">Emergencia en ...</a>
+  					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock content%}
